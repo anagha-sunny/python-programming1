@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage</title>
+    <style>
+        /* Simple bumblebee Theme */
+        body {
+            background-color: yellow;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input[type="text"], input[type="email"] {
+            padding: 8px;
+            width: 250px;
+        }
+        input[type="submit"] {
+            background-color: black;
+            color: yellow;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to ABC's webpage</h1>
+    <p>This is a simple webpage with a form designed with colors</p>
+    <h2>Universal Engineering College</h2>
+    <!-- Contact form -->
+    <form id="contactForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>      
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting immediately
+           
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let isValid = true;
+           
+            // Check if name field is empty
+            if (name.trim() === "") {
+                alert("Name is required");
+                isValid = false;
+            }
+           
+            // Check if email field is empty
+            else if (email.trim() === "") {
+                alert("Email is required");
+                isValid = false;
+            }
+           
+            // Email format validation using regex
+            else {
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address");
+                    isValid = false;
+                }
+            }
+           
+            // If all validations pass
+            if (isValid) {
+                alert("Form submitted successfully");
+                this.submit(); // Actually submit the form
+            }
+        });
+    </script>
+</body>
+</html>
+	
+
+
